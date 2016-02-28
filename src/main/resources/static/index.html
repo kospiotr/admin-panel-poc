@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Angular Material - Starter App</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1"/>
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,700'>
+
+    <link rel="stylesheet" href="lib/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="assets/app.css"/>
+</head>
+<body layout="column" ng-app="adminApp" ng-controller="appController" ng-cloak id="popupContainer">
+<md-toolbar layout="row" ng-show="!$root.showSearch">
+    <div class="md-toolbar-tools">
+        <md-button ng-click="go(app)">{{app.label}}</md-button>
+        <md-menu-bar flex>
+            <md-menu ng-repeat="section in sections" layout-align="center end">
+                <button class="md-button" md-no-ink ng-click="$mdOpenMenu()">
+                    {{section.label}}
+                </button>
+
+                <md-menu-content>
+                    <md-menu-item ng-repeat="subsection in section.items">
+                        <md-button ng-click="go(subsection)">{{subsection.label}}</md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </md-menu-bar>
+        <md-button class="md-icon-button" ng-click="$root.showSearch = !$root.showSearch">
+            <ng-md-icon icon="search"></ng-md-icon>
+        </md-button>
+    </div>
+</md-toolbar>
+<md-toolbar layout="row" ng-show="$root.showSearch">
+    <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" ng-click="$root.showSearch = !$root.showSearch; $root.searchPhrase=''">
+            <ng-md-icon icon="arrow_back"></ng-md-icon>
+        </md-button>
+        <h3 flex="10">Back</h3>
+        <span flex></span>
+        <h3 layout-padding="5">Search:</h3>
+        <md-input-container>
+            <input style="color:white;margin-bottom:-20px;border-color: wheat;" ng-model="$root.searchPhrase"
+                   ng-keyup="$event.keyCode == 13 && doSearch()">
+        </md-input-container>
+        <md-button class="md-icon-button">
+            <ng-md-icon icon="search" ng-click="doSearch()"></ng-md-icon>
+        </md-button>
+    </div>
+</md-toolbar>
+<md-content flex layout="column" ng-view>
+</md-content>
+
+
+<!-- Angular.js Libraries -->
+<script src="lib/angularjs/angular.min.js"></script>
+<script src="lib/angularjs/angular-animate.min.js"></script>
+<script src="lib/angularjs/angular-aria.min.js"></script>
+<script src="lib/angularjs/angular-messages.min.js"></script>
+<script src="lib/angularjs/angular-route.min.js"></script>
+
+<!-- Angular Material Library -->
+<script src="lib/angular-material/angular-material.min.js"></script>
+<script src="lib/angular-material-icons/angular-material-icons.min.js"></script>
+<script src="assets/app.js"></script>
+
+</body>
+</html>

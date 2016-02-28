@@ -1,0 +1,19 @@
+md-toolbar {
+    fill: #fff;
+}
+
+.toolbar-input {
+    padding-bottom: 0px;
+    color: white;
+    border-color: white;
+}
+
+md-content.md-default-theme {
+    background-color: #eee;
+}
+
+md-card h2:first-of-type {
+    margin-top: 0;
+}
+
+
